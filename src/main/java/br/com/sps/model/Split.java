@@ -1,0 +1,139 @@
+package br.com.sps.model;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Objects;
+
+
+public class Split implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+	
+	private Long idSplit;
+	private Long idAcquirer;
+	private Long idMaster;
+	private Long idSubordinate;
+	private Boolean isCommission;
+	private Float GrossAmount;
+	private Float netAmount;
+	private List<Order> transactionList;
+	
+	public Split(){}
+	public Split(Long idSplit, Long idAcquirer, Long idMaster, Long idSubordinate, Boolean isCommission,
+			Float grossAmount, Float netAmount, List<Order> transactionList) {
+		this.idSplit = idSplit;
+		this.idAcquirer = idAcquirer;
+		this.idMaster = idMaster;
+		this.idSubordinate = idSubordinate;
+		this.isCommission = isCommission;
+		this.GrossAmount = grossAmount;
+		this.netAmount = netAmount;
+		this.transactionList = transactionList;
+	}
+
+
+	public Long getIdSplit() {
+		return idSplit;
+	}
+
+
+	public void setIdSplit(Long idSplit) {
+		this.idSplit = idSplit;
+	}
+
+
+	public Long getIdAcquirer() {
+		return idAcquirer;
+	}
+
+
+	public void setIdAcquirer(Long idAcquirer) {
+		this.idAcquirer = idAcquirer;
+	}
+
+
+	public Long getIdMaster() {
+		return idMaster;
+	}
+
+
+	public void setIdMaster(Long idMaster) {
+		this.idMaster = idMaster;
+	}
+
+
+	public Long getIdSubordinate() {
+		return idSubordinate;
+	}
+
+
+	public void setIdSubordinate(Long idSubordinate) {
+		this.idSubordinate = idSubordinate;
+	}
+
+
+	public Boolean getIsCommission() {
+		return isCommission;
+	}
+
+
+	public void setIsCommission(Boolean isCommission) {
+		this.isCommission = isCommission;
+	}
+
+
+	public Float getGrossAmount() {
+		return GrossAmount;
+	}
+
+
+	public void setGrossAmount(Float grossAmount) {
+		GrossAmount = grossAmount;
+	}
+
+
+	public Float getNetAmount() {
+		return netAmount;
+	}
+
+
+	public void setNetAmount(Float netAmount) {
+		this.netAmount = netAmount;
+	}
+
+
+	public List<Order> getTransactionList() {
+		return transactionList;
+	}
+
+
+	public void setTransactionList(List<Order> transactionList) {
+		this.transactionList = transactionList;
+	}
+
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(GrossAmount, idAcquirer, idMaster, idSplit, idSubordinate, isCommission, netAmount,
+				transactionList);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Split other = (Split) obj;
+		return Objects.equals(GrossAmount, other.GrossAmount) && Objects.equals(idAcquirer, other.idAcquirer)
+				&& Objects.equals(idMaster, other.idMaster) && Objects.equals(idSplit, other.idSplit)
+				&& Objects.equals(idSubordinate, other.idSubordinate)
+				&& Objects.equals(isCommission, other.isCommission) && Objects.equals(netAmount, other.netAmount)
+				&& Objects.equals(transactionList, other.transactionList);
+	}
+	
+	
+}
