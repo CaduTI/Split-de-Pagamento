@@ -3,7 +3,7 @@ package br.com.sps.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.sps.data.mapper.SubordinateMapper;
+import br.com.sps.data.mapper.vo.SubordinateMapper;
 import br.com.sps.data.vo.SubordinateVO;
 import br.com.sps.exceptions.ResourceNotFoundException;
 import br.com.sps.model.Subordinate;

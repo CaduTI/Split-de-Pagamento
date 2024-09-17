@@ -1,4 +1,4 @@
-package br.com.sps.data.mapper;
+package br.com.sps.data.mapper.vo;
 
 import org.springframework.context.annotation.Configuration;
 

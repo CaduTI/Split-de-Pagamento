@@ -6,7 +6,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import br.com.sps.controller.AcquirerController;
-import br.com.sps.data.mapper.AcquirerMapper;
+import br.com.sps.data.mapper.vo.AcquirerMapper;
 import br.com.sps.data.vo.AcquirerVO;
 import br.com.sps.exceptions.ResourceNotFoundException;
 import br.com.sps.model.Acquirer;

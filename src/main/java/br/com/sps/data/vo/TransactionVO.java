@@ -1,14 +1,21 @@
-package br.com.sps.model;
+package br.com.sps.data.vo;
 
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.hateoas.RepresentationModel;
 
-public class Split implements Serializable{
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import br.com.sps.model.Order;
+import jakarta.persistence.Id;
+
+@JsonPropertyOrder({"idSplit","idAcquirer","idMaster","idSubordinate","isCommission","GrossAmount","netAmount","transactionList"})
+public class TransactionVO extends RepresentationModel<TransactionVO> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+	@Id
 	private Long idSplit;
 	private Long idAcquirer;
 	private Long idMaster;
@@ -16,11 +23,12 @@ public class Split implements Serializable{
 	private Boolean isCommission;
 	private Float GrossAmount;
 	private Float netAmount;
-	private List<Order> transactionList;
+	private List<Order> transactionInfo;
 	
-	public Split(){}
-	public Split(Long idSplit, Long idAcquirer, Long idMaster, Long idSubordinate, Boolean isCommission,
-			Float grossAmount, Float netAmount, List<Order> transactionList) {
+	public TransactionVO() {}
+	
+	public TransactionVO(Long idSplit, Long idAcquirer, Long idMaster, Long idSubordinate, Boolean isCommission,
+			Float grossAmount, Float netAmount, List<Order> transactionInfo) {
 		this.idSplit = idSplit;
 		this.idAcquirer = idAcquirer;
 		this.idMaster = idMaster;
@@ -28,7 +36,7 @@ public class Split implements Serializable{
 		this.isCommission = isCommission;
 		this.GrossAmount = grossAmount;
 		this.netAmount = netAmount;
-		this.transactionList = transactionList;
+		this.transactionInfo = transactionInfo;
 	}
 
 
@@ -103,21 +111,19 @@ public class Split implements Serializable{
 
 
 	public List<Order> getTransactionList() {
-		return transactionList;
+		return transactionInfo;
 	}
 
 
 	public void setTransactionList(List<Order> transactionList) {
-		this.transactionList = transactionList;
+		this.transactionInfo = transactionList;
 	}
-
 
 	@Override
 	public int hashCode() {
 		return Objects.hash(GrossAmount, idAcquirer, idMaster, idSplit, idSubordinate, isCommission, netAmount,
-				transactionList);
+				transactionInfo);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -127,13 +133,16 @@ public class Split implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Split other = (Split) obj;
+		TransactionVO other = (TransactionVO) obj;
 		return Objects.equals(GrossAmount, other.GrossAmount) && Objects.equals(idAcquirer, other.idAcquirer)
 				&& Objects.equals(idMaster, other.idMaster) && Objects.equals(idSplit, other.idSplit)
 				&& Objects.equals(idSubordinate, other.idSubordinate)
 				&& Objects.equals(isCommission, other.isCommission) && Objects.equals(netAmount, other.netAmount)
-				&& Objects.equals(transactionList, other.transactionList);
+				&& Objects.equals(transactionInfo, other.transactionInfo);
 	}
+
 	
 	
 }
+
+	
