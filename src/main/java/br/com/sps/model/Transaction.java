@@ -21,8 +21,7 @@ public class Transaction implements Serializable{
 	
 	private Long idTransaction;
 	private Long idMaster;
-	private Customer Customer;
+	private Long idCustomer;
 	private Float TotalAmount;
-	private List<Order> splitPayments;
-	public Transaction(){}	
+	private Long splitPayments;
 }

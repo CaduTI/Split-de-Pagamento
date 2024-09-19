@@ -1,11 +1,11 @@
 package br.com.sps.services;
 
-import br.com.sps.data.vo.MasterVO;
+import br.com.sps.model.Master;
 
 public interface MasterService {
 
-	public MasterVO getMaster(Long id);
-	public MasterVO createMaster(MasterVO vo);
-	public MasterVO updateMaster(MasterVO vo);
+	public Master getMaster(Long id);
+	public Master createMaster(Master vo);
+	public Master updateMaster(Master vo);
 	public void deleteMaster (Long id);
 }

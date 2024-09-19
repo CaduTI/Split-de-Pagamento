@@ -1,5 +1,6 @@
 package br.com.sps.services.impl;
 
+import br.com.sps.data.mapper.vo.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.sps.data.vo.CustomerVO;
@@ -13,7 +14,9 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	CustomerRepository repository;
 	
-	
+	@Autowired
+	CustomerMapper mapper;
+
 	@Override
 	public CustomerVO getAcquirer(Long id) {
 		Customer findById = repository.findById(id)

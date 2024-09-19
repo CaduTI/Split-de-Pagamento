@@ -1,10 +1,10 @@
 package br.com.sps.repository;
 
-import br.com.sps.data.vo.TransactionVO;
+import br.com.sps.model.Transaction;
 
 public interface TransactionRepository {
- public TransactionVO selectSplit(Long id);
- public void createSplit(TransactionVO vo);
- public void updateSplit(TransactionVO vo);
+ public Transaction selectSplit(Long id);
+ public void createSplit(Transaction vo);
+ public void updateSplit(Transaction vo);
  public void deleteSplit(Long id);
 }

@@ -1,7 +1,6 @@
 package br.com.sps.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,27 +11,24 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 @Entity
-@Table(name = "Master")
+@Table(name = "Orders")
 @Builder
 @Getter
 @Setter
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class Master implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
+public class PaymentInformation implements Serializable{
 
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idMaster;
+	private Long orderId;
 	
-	@Column(name = "Name", nullable = false)
-	private String name;
+	@Column(name = "SubordinateId")
+	private Long subordinateId;
 	
-	@Column(name = "DocumentNumber", nullable = false)
-	private String documentNumber;
-	
-	@Column(name = "PercentRepass", nullable = false)
-	private Float percentRepass;
+	@Column(name = "Amount")
+	private Float amount;
 }

@@ -1,12 +1,12 @@
 package br.com.sps.repository.impl;
 
+import br.com.sps.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import br.com.sps.data.mapper.dao.TransactionDAOMapper;
-import br.com.sps.data.vo.TransactionVO;
+import br.com.sps.mapper.TransactionDAOMapper;
 import br.com.sps.repository.TransactionRepository;
 
 @Repository
@@ -24,7 +24,7 @@ public class TransactionRepositoryImpl implements TransactionRepository{
     private static final String DELETE_SPLIT_BY_ID_QUERY = "DELETE FROM SPLIT WHERE idSplit:idSplit";
 	
 	@Override
-	public TransactionVO selectSplit(Long id) {
+	public Transaction selectSplit(Long id) {
 		MapSqlParameterSource mapParameters = new MapSqlParameterSource();
 		
 		mapParameters.addValue("idSplit", id);
@@ -33,30 +33,20 @@ public class TransactionRepositoryImpl implements TransactionRepository{
 	}
 
 	@Override
-	public void createSplit(TransactionVO vo) {
+	public void createSplit(Transaction vo) {
 		MapSqlParameterSource mapParameters = new MapSqlParameterSource();
 		
-		mapParameters.addValue("idSplit", vo.getIdSplit());
-		mapParameters.addValue("idAcquirer", 1);
-		mapParameters.addValue("idMaster", vo.getIdMaster());
-		mapParameters.addValue("GrossAmount", vo.getGrossAmount());
-		mapParameters.addValue("netAmount", vo.getNetAmount());
-		mapParameters.addValue("transactionList", vo.getTransactionList());
+
 		
 		jdbcTemplate.update(INSERT_SPLIT_QUERY, mapParameters);
 		
 	}
 
 	@Override
-	public void updateSplit(TransactionVO vo) {
+	public void updateSplit(Transaction vo) {
 		MapSqlParameterSource mapParameters = new MapSqlParameterSource();
 		
 		mapParameters.addValue("idSplit", vo.getIdMaster());
-		mapParameters.addValue("idSplit", vo.getIdSubordinate());
-		mapParameters.addValue("idSplit", vo.getIsCommission());
-		mapParameters.addValue("idSplit", vo.getGrossAmount());
-		mapParameters.addValue("idSplit", vo.getNetAmount());
-		mapParameters.addValue("idSplit", vo.getTransactionList());
 		
 		jdbcTemplate.update(UPDATE_SPLIT_BY_ID_QUERY, mapParameters);
 		

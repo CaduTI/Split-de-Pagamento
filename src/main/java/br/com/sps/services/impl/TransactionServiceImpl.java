@@ -3,9 +3,9 @@ package br.com.sps.services.impl;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.sps.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.sps.data.vo.TransactionVO;
 import br.com.sps.repository.impl.TransactionRepositoryImpl;
 import br.com.sps.services.TransactionService;
 
@@ -15,25 +15,25 @@ public class TransactionServiceImpl implements TransactionService{
 	TransactionRepositoryImpl repository;
 	
 	@Override
-	public TransactionVO FindSplitById(Long id) throws SQLException{
+	public Transaction FindSplitById(Long id) throws SQLException{
 		
 		return repository.selectSplit(id);
  }
 	
 	@Override
-	public List<TransactionVO> FindAllSplit(Long id){
+	public List<Transaction> FindAllSplit(Long id){
 		//criar um condicional com base no type o id fornecido, ex: um busca caso acquirer,master e sub.
 		
 		return null;
 	}
 	@Override
-	public TransactionVO createSplit(TransactionVO vo) {
+	public Transaction createSplit(Transaction vo) {
 		
 		return null;
 	}
 
 	@Override
-	public TransactionVO updateSplit(TransactionVO vo) {
+	public Transaction updateSplit(Transaction vo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -48,7 +48,7 @@ public class TransactionServiceImpl implements TransactionService{
 	}
 
 	@Override
-	public TransactionVO commissionRepass() {
+	public Transaction commissionRepass() {
 		// TODO Auto-generated method stub
 		return null;
 	}

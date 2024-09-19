@@ -2,9 +2,6 @@ package br.com.sps.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import br.com.sps.data.mapper.vo.MasterMapper;
-import br.com.sps.data.vo.MasterVO;
 import br.com.sps.exceptions.ResourceNotFoundException;
 import br.com.sps.model.Master;
 import br.com.sps.repository.MasterRepository;
@@ -16,41 +13,31 @@ public class MasterServiceImpl implements MasterService{
 	@Autowired
 	MasterRepository repository;
 	
-	@Autowired
-	MasterMapper mapper;
-	
 	@Override
-	public MasterVO getMaster(Long id) {
+	public Master getMaster(Long id) {
 		Master findById = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Master not found."));
 		
-		MasterVO vo = mapper.toVO(findById);
+
 		
-		return vo;
+		return findById;
 	}
 
 	@Override
-	public MasterVO createMaster(MasterVO vo) {
-		Master entity = mapper.toEntity(vo);
-		
-		MasterVO returnVo = mapper.toVO(repository.save(entity));
-		
-		return returnVo;
+	public Master createMaster(Master entity) {
+		return repository.save(entity);
 	}
 
 	@Override
-	public MasterVO updateMaster(MasterVO vo) {
-		Master findById = repository.findById(vo.getIdMaster())
+	public Master updateMaster(Master entity) {
+		Master findById = repository.findById(entity.getIdMaster())
 				.orElseThrow(() -> new ResourceNotFoundException("Master not found."));
 		
-		findById.setName(vo.getName());
-		findById.setDocumentNumber(vo.getDocumentNumber());
-		findById.setPercentRepass(vo.getPercentRepass());
-		
-		MasterVO returnVo = mapper.toVO(findById);
-		
-		
-		return returnVo;
+		findById.setName(entity.getName());
+		findById.setDocumentNumber(entity.getDocumentNumber());
+		findById.setPercentRepass(entity.getPercentRepass());
+
+		return repository.save(findById);
 	}
 
 	@Override
