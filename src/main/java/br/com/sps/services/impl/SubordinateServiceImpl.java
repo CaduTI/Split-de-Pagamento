@@ -1,14 +1,11 @@
 package br.com.sps.services.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import br.com.sps.data.mapper.vo.SubordinateMapper;
-import br.com.sps.data.vo.SubordinateVO;
 import br.com.sps.exceptions.ResourceNotFoundException;
 import br.com.sps.model.Subordinate;
 import br.com.sps.repository.SubordinateRepository;
 import br.com.sps.services.SubordinateService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class SubordinateServiceImpl implements SubordinateService{
@@ -16,28 +13,24 @@ public class SubordinateServiceImpl implements SubordinateService{
 	@Autowired
 	SubordinateRepository repository;
 	
-	@Autowired
-	SubordinateMapper mapper;
-	
 	@Override
-	public SubordinateVO getSubordinate(Long id) {
+	public Subordinate getSubordinate(Long id) {
 		Subordinate findId = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Carrinho não encontrado."));
 		
-		SubordinateVO vo = mapper.toVO(findId);
+
 		
-		return vo;
+		return findId;
 	}
 
 	@Override
-	public SubordinateVO createSubordinate(SubordinateVO sub) {
-		Subordinate  subordinate = mapper.toEntity(sub);
-		SubordinateVO vo = mapper.toVO(repository.save(subordinate));
-		return vo;
+	public Subordinate createSubordinate(Subordinate sub) {
+
+		return repository.save(sub);
 	}
 
 	@Override
-	public SubordinateVO updateSubordinate(SubordinateVO sub) {
+	public Subordinate updateSubordinate(Subordinate sub) {
 		Subordinate findId = repository.findById(sub.getIdSubordinate())
 				.orElseThrow(() -> new ResourceNotFoundException("Carrinho não encontrado."));		
 		
@@ -45,9 +38,9 @@ public class SubordinateServiceImpl implements SubordinateService{
 		findId.setDocumentNumber(sub.getDocumentNumber());
 		findId.setPercentRepass(sub.getPercentRepass());
 		
-		SubordinateVO vo = mapper.toVO(repository.save(findId));
+		return repository.save(findId);
 
-		return vo;
+
 	}
 
 	@Override

@@ -1,10 +1,11 @@
 package br.com.sps.services;
 
-import br.com.sps.data.vo.CustomerVO;
+
+import br.com.sps.model.Customer;
 
 public interface CustomerService {
-	public CustomerVO getAcquirer(Long id);
-	public CustomerVO createAcquirer(CustomerVO vo);
-	public CustomerVO updateAcquirer(CustomerVO vo);
-	public void deleteAcquirer(Long id);
+	public Customer getCustomer(Long id);
+	public Customer createCustomer(Customer vo);
+	public Customer updateCustomer(Customer vo);
+	public void deleteCustomer(Long id);
 }

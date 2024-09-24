@@ -1,10 +1,11 @@
 package br.com.sps.services;
 
-import br.com.sps.data.vo.AcquirerVO;
+
+import br.com.sps.model.Acquirer;
 
 public interface AcquirerService {
-	public AcquirerVO getAcquirer(Long id);
-	public AcquirerVO createAcquirer(AcquirerVO vo);
-	public AcquirerVO updateAcquirer(AcquirerVO vo);
+	public Acquirer getAcquirer(Long id);
+	public Acquirer createAcquirer(Acquirer vo);
+	public Acquirer updateAcquirer(Acquirer vo);
 	public void deleteAcquirer(Long id);
 }

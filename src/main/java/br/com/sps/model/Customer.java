@@ -14,7 +14,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.Accessors;
 
 @Entity
 @Table(name = "Customer")
@@ -37,9 +36,11 @@ public class Customer implements Serializable{
 	private String customerName;
 	
 	@Column(name = "DocumentNumber", nullable = false)
-	private String DocumentNumber;
+	private String documentNumber;
 	
 	@Column(name = "phoneNumber", nullable = false)
 	private String phoneNumber;
+
+	private String email;
 	
 }

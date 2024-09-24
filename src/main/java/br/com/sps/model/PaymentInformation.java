@@ -24,7 +24,7 @@ public class PaymentInformation implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long orderId;
+	private Long idPayment;
 	
 	@Column(name = "SubordinateId")
 	private Long subordinateId;

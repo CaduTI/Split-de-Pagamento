@@ -1,45 +1,50 @@
 package br.com.sps.services.impl;
 
-import br.com.sps.data.mapper.vo.CustomerMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import br.com.sps.data.vo.CustomerVO;
 import br.com.sps.exceptions.ResourceNotFoundException;
 import br.com.sps.model.Customer;
 import br.com.sps.repository.CustomerRepository;
 import br.com.sps.services.CustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class CustomerServiceImpl implements CustomerService{
 	
 	@Autowired
 	CustomerRepository repository;
-	
-	@Autowired
-	CustomerMapper mapper;
+
 
 	@Override
-	public CustomerVO getAcquirer(Long id) {
+	public Customer getCustomer(Long id) {
 		Customer findById = repository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("Master not found."));
-		CustomerVO returnVo = mapper.toVO(findById);
-		return returnVo;
+
+		return findById;
 	}
 
 	@Override
-	public CustomerVO createAcquirer(CustomerVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Customer createCustomer(Customer entity) {
+
+		return repository.save(entity);
 	}
 
 	@Override
-	public CustomerVO updateAcquirer(CustomerVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+	public Customer updateCustomer(Customer entity) {
+		Customer findById = repository.findById(entity.getIdCustomer())
+				.orElseThrow(() -> new ResourceNotFoundException("Master not found."));
+
+		findById.setCustomerName(entity.getCustomerName());
+		findById.setDocumentNumber(entity.getDocumentNumber());
+		findById.setEmail(entity.getEmail());
+		findById.setPhoneNumber(entity.getPhoneNumber());
+
+		return repository.save(entity);
 	}
 
 	@Override
-	public void deleteAcquirer(Long id) {
-		// TODO Auto-generated method stub
+	public void deleteCustomer(Long id) {
+		Customer findById = repository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Master not found."));
+
+		repository.delete(findById);
 		
 	}
 

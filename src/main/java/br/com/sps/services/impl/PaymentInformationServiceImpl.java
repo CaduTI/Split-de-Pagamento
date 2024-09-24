@@ -34,7 +34,7 @@ public class PaymentInformationServiceImpl implements PaymentInformationService 
 
 	@Override
 	public PaymentInformation updatePaymentInfo(PaymentInformation vo) {
-		PaymentInformation entity = repository.findById(vo.getOrderId())
+		PaymentInformation entity = repository.findById(vo.getIdPayment())
 				.orElseThrow(() -> new ResourceNotFoundException("OrderId is not found"));
 		
 		entity.setSubordinateId(vo.getSubordinateId());

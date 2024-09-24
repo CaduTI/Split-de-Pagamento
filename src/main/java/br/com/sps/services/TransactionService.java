@@ -1,20 +1,21 @@
 package br.com.sps.services;
 
-import br.com.sps.model.Transaction;
+import br.com.sps.dtos.response.TransactionResponse;
+import br.com.sps.model.Transactions;
+import br.com.sps.dtos.request.TransactionRequest;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public interface TransactionService {
-	public Transaction FindSplitById(Long id) throws SQLException;
+	public Transactions FindTransactionById(Long id) throws SQLException;
 	
-	public List<Transaction> FindAllSplit(Long id);
+	public List<Transactions> FindAllTransaction(Long id);
 	
-	public Transaction createSplit(Transaction vo);
+	public TransactionResponse createTransaction(TransactionRequest vo);
 	
-	public Transaction updateSplit(Transaction vo);
+	public TransactionResponse updateTransaction(TransactionRequest vo);
 	
-	public void deleteSplit(Long id) throws SQLException;
-	
-	public Transaction commissionRepass();
+	public void deleteTransaction(Long id) throws SQLException;
+
 }
