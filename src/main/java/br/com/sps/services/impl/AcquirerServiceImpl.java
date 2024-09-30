@@ -38,7 +38,7 @@ public class AcquirerServiceImpl implements AcquirerService{
 		
 		findById.setName(entity.getName());
 		findById.setDocumentNumber(entity.getDocumentNumber());
-		findById.setPercentRepass(entity.getPercentRepass());
+		findById.setPercentRate(entity.getPercentRate());
 
 		return repository.save(findById);
 	}

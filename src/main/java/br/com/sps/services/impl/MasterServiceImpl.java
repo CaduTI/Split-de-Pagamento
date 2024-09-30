@@ -35,7 +35,7 @@ public class MasterServiceImpl implements MasterService{
 		
 		findById.setName(entity.getName());
 		findById.setDocumentNumber(entity.getDocumentNumber());
-		findById.setPercentRepass(entity.getPercentRepass());
+		findById.setPercentRate(entity.getPercentRate());
 
 		return repository.save(findById);
 	}

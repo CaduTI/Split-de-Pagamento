@@ -15,8 +15,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "Customer")
+
 @Builder
 @Getter
 @Setter
@@ -27,18 +26,11 @@ import lombok.Setter;
 public class Customer implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idCustomer;
-	
-	@Column(name = "customerName", nullable = false)
+
 	private String customerName;
-	
-	@Column(name = "DocumentNumber", nullable = false)
+
 	private String documentNumber;
-	
-	@Column(name = "phoneNumber", nullable = false)
+
 	private String phoneNumber;
 
 	private String email;

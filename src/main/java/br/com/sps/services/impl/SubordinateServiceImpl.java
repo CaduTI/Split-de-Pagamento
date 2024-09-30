@@ -36,7 +36,7 @@ public class SubordinateServiceImpl implements SubordinateService{
 		
 		findId.setName(sub.getName());
 		findId.setDocumentNumber(sub.getDocumentNumber());
-		findId.setPercentRepass(sub.getPercentRepass());
+		findId.setPercentRate(sub.getPercentRate());
 		
 		return repository.save(findId);
 

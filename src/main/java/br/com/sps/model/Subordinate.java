@@ -27,17 +27,17 @@ public class Subordinate implements Serializable{
 	@Column(name = "DocumentNumber", nullable = false)
 	private String documentNumber;
 	
-	@Column(name = "PercentRepass", nullable = false)
-	private Float percentRepass;
+	@Column(name = "PercentRate", nullable = false)
+	private Float percentRate;
 	
 	//Constructors
 	public Subordinate(){};
 	
-	public Subordinate(Long idSubordinate, String name, String documentNumber, Float percentRepass) {
+	public Subordinate(Long idSubordinate, String name, String documentNumber, Float percentRate) {
 		this.idSubordinate = idSubordinate;
 		this.name = name;
 		this.documentNumber = documentNumber;
-		this.percentRepass = percentRepass;
+		this.percentRate = percentRate;
 	}
 	
 	//Getters and Setters
@@ -65,17 +65,17 @@ public class Subordinate implements Serializable{
 		this.documentNumber = documentNumber;
 	}
 
-	public Float getPercentRepass() {
-		return percentRepass;
+	public Float getPercentRate() {
+		return percentRate;
 	}
 
-	public void setPercentRepass(Float percentRepass) {
-		this.percentRepass = percentRepass;
+	public void setPercentRate(Float percentRate) {
+		this.percentRate = percentRate;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(documentNumber, idSubordinate, name, percentRepass);
+		return Objects.hash(documentNumber, idSubordinate, name, percentRate);
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class Subordinate implements Serializable{
 		Subordinate other = (Subordinate) obj;
 		return Objects.equals(documentNumber, other.documentNumber)
 				&& Objects.equals(idSubordinate, other.idSubordinate) && Objects.equals(name, other.name)
-				&& Objects.equals(percentRepass, other.percentRepass);
+				&& Objects.equals(percentRate, other.percentRate);
 	}
 	
 	

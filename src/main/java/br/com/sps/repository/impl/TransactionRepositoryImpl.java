@@ -15,13 +15,10 @@ public class TransactionRepositoryImpl implements TransactionRepository{
 	@Autowired
 	NamedParameterJdbcTemplate jdbcTemplate;
 	
-	@Autowired
-	TransactionDAOMapper mapper;
-	
-	private static final String INSERT_SPLIT_QUERY = "INSERT INTO Transactions(idTransaction,idMaster,idCustomer,customerName,documentNumber,phoneNumber,email,totalAmount,idSubordinate,createdAt,updatedAt) values(:idTransaction,:idMaster,:idCustomer,:customerName,:documentNumber,:phoneNumber,:email,:totalAmount,:idSubordinate,:createdAt,:updatedAt)";
-    private static final String UPDATE_SPLIT_BY_ID_QUERY = "UPDATE SPLIT SET :idCustomer, :customerName,:documentNumber,:phoneNumber, :email, :totalAmount, :idSubordinate, :createdAt, :updatedAt WHERE = :idTransaction";
-    private static final String SELECT_SPLIT_QUERY = "SELECT * FROM SPLIT WHERE :idTransaction";
-    private static final String DELETE_SPLIT_BY_ID_QUERY = "DELETE FROM SPLIT WHERE :idTransaction";
+	private static final String INSERT_Transaction_QUERY = "INSERT INTO Transactions(idTransaction,idMaster,customerName,documentNumber,phoneNumber,email,totalAmount,idSubordinate,createdAt,updatedAt) values(:idTransaction,:idMaster,:customerName,:documentNumber,:phoneNumber,:email,:totalAmount,:idSubordinate,:createdAt,:updatedAt)";
+    private static final String UPDATE_Transaction_BY_ID_QUERY = "UPDATE SPLIT SET , :customerName,:documentNumber,:phoneNumber, :email, :totalAmount, :idSubordinate, :createdAt, :updatedAt WHERE = :idTransaction";
+    private static final String SELECT_Transaction_QUERY = "SELECT * FROM SPLIT WHERE :idTransaction";
+    private static final String DELETE_Transaction_BY_ID_QUERY = "DELETE FROM SPLIT WHERE :idTransaction";
 	
 	@Override
 	public Transactions selectSplit(Long id) {
@@ -29,7 +26,7 @@ public class TransactionRepositoryImpl implements TransactionRepository{
 		
 		mapParameters.addValue("idTransaction", id);
 
-       return jdbcTemplate.query(SELECT_SPLIT_QUERY, mapParameters, new TransactionDAOMapper()).get(0);
+       return jdbcTemplate.query(SELECT_Transaction_QUERY, mapParameters, new TransactionDAOMapper()).get(0);
 	}
 
 	@Override
@@ -38,7 +35,6 @@ public class TransactionRepositoryImpl implements TransactionRepository{
 
 		mapParameters.addValue("idTransaction", model.getIdTransaction());
 		mapParameters.addValue("idMaster", model.getIdMaster());
-		mapParameters.addValue("idCustomer", model.getIdCustomer());
 		mapParameters.addValue("customerName", model.getCustomerName());
 		mapParameters.addValue("documentNumber", model.getDocumentNumber());
 		mapParameters.addValue("phoneNumber", model.getPhoneNumber());
@@ -48,7 +44,7 @@ public class TransactionRepositoryImpl implements TransactionRepository{
 		mapParameters.addValue("createdAt", model.getCreatedAt());
 		mapParameters.addValue("updatedAt", model.getUpdatedAt());
 
-		jdbcTemplate.update(INSERT_SPLIT_QUERY, mapParameters);
+		jdbcTemplate.update(INSERT_Transaction_QUERY, mapParameters);
 	}
 
 	@Override
@@ -66,7 +62,7 @@ public class TransactionRepositoryImpl implements TransactionRepository{
 		mapParameters.addValue("createdAt", model.getCreatedAt());
 		mapParameters.addValue("updateAt", model.getUpdatedAt());
 
-		jdbcTemplate.update(UPDATE_SPLIT_BY_ID_QUERY, mapParameters);
+		jdbcTemplate.update(UPDATE_Transaction_BY_ID_QUERY, mapParameters);
 	}
 
 	@Override
@@ -75,7 +71,7 @@ public class TransactionRepositoryImpl implements TransactionRepository{
 		
 		mapParameters.addValue("idSplit", id);	
 		
-		jdbcTemplate.update(DELETE_SPLIT_BY_ID_QUERY, mapParameters);	
+		jdbcTemplate.update(DELETE_Transaction_BY_ID_QUERY, mapParameters);
 	}
 
 }

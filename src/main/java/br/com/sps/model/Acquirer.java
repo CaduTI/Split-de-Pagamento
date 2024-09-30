@@ -33,5 +33,5 @@ public class Acquirer implements Serializable{
 	private String DocumentNumber;
 	
 	
-	private Float PercentRepass;
+	private Float PercentRate;
 }

@@ -21,27 +21,23 @@ public class TransactionServiceImpl implements TransactionService{
 
 	@Autowired
 	TransactionMapper mapper;
-	
+
+	@Autowired
+	SplitServiceImpl split;
+
 	@Override
 	public Transactions FindTransactionById(Long id) throws SQLException{
 		
 		return repository.selectSplit(id);
  }
 	
-	@Override
-	public List<Transactions> FindAllTransaction(Long id){
-		//criar um condicional com base no type o id fornecido, ex: um busca caso acquirer,master e sub.
 
-
-		return null;
-	}
 	@Override
 	public TransactionResponse createTransaction(TransactionRequest request) {
 		Transactions model = new Transactions();
 
 		model.setIdTransaction(new Random().nextLong(2000000));
 		model.setIdMaster(request.getIdMaster());
-		model.setIdCustomer(request.getCustomer().getIdCustomer());
 		model.setCustomerName(request.getCustomer().getCustomerName());
 		model.setDocumentNumber(request.getCustomer().getDocumentNumber());
 		model.setPhoneNumber(request.getCustomer().getPhoneNumber());
@@ -53,6 +49,8 @@ public class TransactionServiceImpl implements TransactionService{
 
 		repository.createSplit(model);
 
+		split.createSplit(model);
+
 		return  mapper.toDTO(model);
 	}
 
@@ -60,7 +58,6 @@ public class TransactionServiceImpl implements TransactionService{
 	public TransactionResponse updateTransaction(TransactionRequest request) {
 		Transactions findById = repository.selectSplit(request.getIdTransaction());
 
-		findById.setIdCustomer(request.getCustomer().getIdCustomer());
 		findById.setCustomerName(request.getCustomer().getCustomerName());
 		findById.setDocumentNumber(request.getCustomer().getDocumentNumber());
 		findById.setEmail(request.getCustomer().getEmail());

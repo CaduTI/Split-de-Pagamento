@@ -33,6 +33,6 @@ public class Master implements Serializable{
 	@Column(name = "DocumentNumber", nullable = false)
 	private String documentNumber;
 	
-	@Column(name = "PercentRepass", nullable = false)
-	private Float percentRepass;
+	@Column(name = "PercentRate", nullable = false)
+	private Float percentRate;
 }

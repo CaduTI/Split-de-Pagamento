@@ -15,7 +15,6 @@ public class TransactionMapper {
 
         Customer customer = new Customer();
 
-        customer.setIdCustomer(model.getIdCustomer());
         customer.setCustomerName(model.getCustomerName());
         customer.setDocumentNumber(model.getDocumentNumber());
         customer.setPhoneNumber(model.getPhoneNumber());

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @RestController
-@RequestMapping("api/acquirer/vi")
+@RequestMapping("api/acquirer/v1")
 public class AcquirerController {
 	
 	@Autowired
