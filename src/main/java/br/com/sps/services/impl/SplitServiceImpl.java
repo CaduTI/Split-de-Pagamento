@@ -4,7 +4,6 @@ package br.com.sps.services.impl;
 import br.com.sps.model.Split;
 import br.com.sps.model.Transactions;
 import br.com.sps.repository.impl.SplitRepositoryImpl;
-import br.com.sps.services.AcquirerService;
 import br.com.sps.services.SplitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

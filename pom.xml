@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>br.com.carlos</groupId>
 	<artifactId>Split-de-Pagamento</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>Split-de-Pagamento</name>
 	<description>Split de Pagamento</description>
 	<url/>
