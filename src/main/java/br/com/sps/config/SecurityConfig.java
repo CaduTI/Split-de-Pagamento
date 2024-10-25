@@ -51,13 +51,8 @@ public class SecurityConfig  {
         http
                 // Desabilita autenticação básica via HTTP
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers(
-                                "/auth/signin",
-                                "/auth/refresh",
-                                "/api-docs/**",
-                                "/swagger-ui.html**"
-                        ).permitAll()
-                        .requestMatchers("/api/**").authenticated()
+                        .requestMatchers("/auth/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/api/v1/**").authenticated()
                         .requestMatchers("/users").denyAll()
                 )
                 // Configuração de CSRF (desabilitado)

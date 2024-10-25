@@ -2,6 +2,7 @@ package br.com.sps.security.jwt;
 
 import br.com.sps.dtos.security.TokenDTO;
 import br.com.sps.exceptions.InvalidJwtAuthenticationException;
+import br.com.sps.services.impl.UserServiceImpl;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -12,7 +13,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import jakarta.servlet.http.HttpServletRequest;
@@ -31,7 +31,7 @@ public class JwtTokenProvider {
     private long validityinMilliseconds = 360000; ///1H
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private UserServiceImpl userDetailsService;
 
     Algorithm algorithm = null;
 
