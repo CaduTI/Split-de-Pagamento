@@ -39,9 +39,9 @@ public class SplitServiceImpl implements SplitService {
         float subordinateRate = subordinate.getSubordinate(model.getIdSubordinate()).getPercentRate();
 
         float subordinateCommission = (model.getTotalAmount() * subordinateRate)/100;
-        float masterCommission = (model.getTotalAmount() * masterRate)/100;
-        float acquirerCommission = (masterCommission * acquirerRate)/100;
-
+        float masterCommissionGross = (model.getTotalAmount() * masterRate)/100;
+        float acquirerCommission = (masterCommissionGross * acquirerRate)/100;
+        float masterCommission = masterCommissionGross - acquirerCommission;
 
 
         split.setIdSplit(new Random().nextLong(2000000));

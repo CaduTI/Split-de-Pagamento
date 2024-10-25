@@ -10,9 +10,9 @@ import java.util.List;
 public interface TransactionService {
 	public Transactions FindTransactionById(Long id) throws SQLException;
 	
-	public TransactionResponse createTransaction(TransactionRequest vo);
+	public TransactionResponse createTransaction(TransactionRequest vo) throws SQLException;
 	
-	public TransactionResponse updateTransaction(TransactionRequest vo);
+	public TransactionResponse updateTransaction(TransactionRequest vo) throws SQLException;
 	
 	public void deleteTransaction(Long id) throws SQLException;
 

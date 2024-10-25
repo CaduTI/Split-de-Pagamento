@@ -44,6 +44,7 @@ public class TransactionController {
         return service.FindTransactionById(id);
     }
 
+    @CrossOrigin(origins = {"http://localhost:8080","http://localhost:3000"})
     @PostMapping(consumes = {Media.APPLICATION_JSON,Media.APPLICATION_XML, Media.APPLICATION_YML},
             produces = {Media.APPLICATION_JSON,Media.APPLICATION_XML, Media.APPLICATION_YML})
     @Operation(summary = "Post Carrinho", description = "Cria um Carrinho com as informações enviadas no request.",
@@ -58,7 +59,7 @@ public class TransactionController {
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
             })
-    public TransactionResponse createTransactions(@RequestBody TransactionRequest model){
+    public TransactionResponse createTransactions(@RequestBody TransactionRequest model) throws SQLException {
         return service.createTransaction(model);
     }
 
@@ -78,8 +79,8 @@ public class TransactionController {
                     @ApiResponse(description = "Not Found", responseCode = "404", content = @Content),
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content)
             })
-    public TransactionResponse updateTransactions(@RequestBody TransactionRequest model){
-        return service.createTransaction(model);
+    public TransactionResponse updateTransactions(@RequestBody TransactionRequest model) throws SQLException {
+        return service.updateTransaction(model);
     }
 
     @DeleteMapping(value = "/{id}",

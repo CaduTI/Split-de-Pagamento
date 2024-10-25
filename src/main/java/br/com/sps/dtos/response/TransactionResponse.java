@@ -4,6 +4,7 @@ import br.com.sps.model.Customer;
 import br.com.sps.model.PaymentInformation;
 import br.com.sps.model.Transactions;
 import lombok.*;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.util.Date;
 
@@ -13,7 +14,7 @@ import java.util.Date;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
-public class TransactionResponse{
+public class TransactionResponse extends RepresentationModel<TransactionResponse> {
 
     //informações da hierarquia
     Long idTransaction;
