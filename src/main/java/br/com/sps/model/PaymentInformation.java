@@ -6,11 +6,10 @@ import java.io.Serializable;
 import lombok.*;
 
 @Builder
-@Getter
-@Setter
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class PaymentInformation implements Serializable{
 
 	private static final long serialVersionUID = 1L;

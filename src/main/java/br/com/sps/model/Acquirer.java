@@ -13,11 +13,10 @@ import lombok.*;
 @Entity
 @Table(name = "Acquirer")
 @Builder
-@Getter
-@Setter
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Acquirer implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

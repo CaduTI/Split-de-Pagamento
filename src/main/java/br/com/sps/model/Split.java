@@ -5,11 +5,10 @@ import lombok.*;
 import java.util.Date;
 
 @Builder
-@Getter
-@Setter
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Split {
 
     private Long idSplit;

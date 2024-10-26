@@ -14,11 +14,10 @@ import lombok.*;
 @Entity
 @Table(name = "Master")
 @Builder
-@Getter
-@Setter
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Master implements Serializable{
 	
 	private static final long serialVersionUID = 1L;

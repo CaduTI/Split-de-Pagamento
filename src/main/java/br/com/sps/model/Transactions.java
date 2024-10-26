@@ -3,12 +3,7 @@ package br.com.sps.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 
 @Builder
@@ -17,6 +12,7 @@ import org.springframework.hateoas.RepresentationModel;
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Transactions implements Serializable{
 
 	private static final long serialVersionUID = 1L;

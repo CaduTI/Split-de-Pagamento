@@ -14,7 +14,7 @@ public class OpenAPIConfig{
 	public OpenAPI customOpenAPI() {
 		return new OpenAPI()
 				.info(new Info()
-				.title("Simple Ecommerce Cart")
+				.title("Swift Pay - Split Payments")
 				.version("V1")
 				.description("A simple API with Java and Spring Boot")
 				.termsOfService("https://github.com/CaduTI")
