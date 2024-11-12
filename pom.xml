@@ -30,7 +30,7 @@
 		<java.version>17</java.version>
 		<dozer.version>7.0.0</dozer.version>
 		<springdoc.version>2.0.2</springdoc.version>
-		<lombok.version>1.18.4</lombok.version>
+		<lombok.version>1.18.34</lombok.version>
 		<modelmapper.version>3.2.1</modelmapper.version>
 		<java-jwt.version>3.18.3</java-jwt.version>
 	</properties>
@@ -91,6 +91,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>com.auth0</groupId>
 			<artifactId>java-jwt</artifactId>

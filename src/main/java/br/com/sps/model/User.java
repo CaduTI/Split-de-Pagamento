@@ -1,24 +1,21 @@
 package br.com.sps.model;
 
+import br.com.sps.dtos.request.LoginRequest;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Set;
 
 @Entity
-@Table(name = "users")
+@Table
 @Builder
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class User implements UserDetails, Serializable {
-    //criar um mecanismo para cada tipo usuário(acquirer, master e subordinate) ter um nível de acesso
+public class User implements Serializable {
 
     private static final Long serialVersionUID = 1l;
     @Id
@@ -27,70 +24,21 @@ public class User implements UserDetails, Serializable {
     @Column(name = "user_name", unique = true)
     private String userName;
 
-    @Column(name = "full_name")
-    private String fullName;
-
     @Column(name = "password")
     private String password;
 
-    @Column(name = "account_non_expired")
-    private Boolean accountNonExpired;
-
-    @Column(name = "account_non_locked")
-    private Boolean accountNonLocked;
-
-    @Column(name = "credentials_non_expired")
-    private Boolean credentialsNonExpired;
-
-    @Column(name = "enabled")
-    private Boolean enabled;
+    private Set<Role> roles;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_permission", joinColumns = {@JoinColumn (name = "id_user")},
             inverseJoinColumns = {@JoinColumn (name = "id_permission")}
     )
-    private List<Permission> permissions;
 
-    public List<String> getRoles() {
-        List<String> roles = new ArrayList<>();
-        for (Permission permission : permissions) {
-            roles.add(permission.getDescription());
-        }
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
-    }
-
-    @Override
-    public String getPassword() {
-        return null;
-    }
-
-    @Override
-    public String getUsername() {
-        return null;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+    public boolean isLoginCorrect(LoginRequest loginRequest, PasswordEncoder passwordEncoder) {
+        return passwordEncoder.matches(loginRequest.password(), this.password);
     }
 }
